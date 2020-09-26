@@ -3,8 +3,9 @@ module.exports = {
   theme: {
     colors: {
       white: "#fff",
-      cyan: "hsl(180, 66%, 49%)",
+      cyan: { default: "hsl(180, 66%, 49%)", ligher: "#9be3e2" },
       violet: {
+        lightest: "#f0f1f6",
         lighter: "hsl(257, 7%, 63%)",
         default: "hsl(257, 27%, 26%)",
         dark: "hsl(260, 8%, 14%)",
@@ -19,6 +20,13 @@ module.exports = {
       },
       fontSize: {
         "7xl": "5rem",
+      },
+      spacing: {
+        22: "5.5rem",
+        44: "11rem",
+        68: "17rem",
+        72: "18rem",
+        76: "19rem",
       },
     },
   },
