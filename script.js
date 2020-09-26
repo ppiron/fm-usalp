@@ -1,7 +1,8 @@
 data = () => {
   return {
-    links: [],
+    links: JSON.parse(window.sessionStorage.getItem("links")) || [],
     submitError: false,
+    // copySuccess: false,
     link: "",
     submit() {
       if (this.link === "") {
@@ -20,16 +21,40 @@ data = () => {
         })
           .then((response) => response.json())
           .then((json) => {
-            this.links = [...this.links, { url: this.link, hash: json.hashid }];
+            this.links = [
+              ...this.links,
+              { url: this.link, hash: json.hashid, copied: false },
+            ];
+            window.sessionStorage.setItem("links", JSON.stringify(this.links));
             // console.log(this.links);
             this.link = "";
           });
       }
     },
-    onKeyUp() {
+    onInput() {
       if (this.submitError) {
         this.submitError = false;
       }
+    },
+    onKeyUp(event) {
+      if (event.code === "Enter") {
+        this.submit();
+      }
+    },
+    copy(string, index) {
+      navigator.clipboard.writeText(string).then(
+        () => {
+          // this.copySuccess = true;
+          this.links[index]["copied"] = true;
+          window.setTimeout(() => {
+            this.copySuccess = false;
+            this.links[index]["copied"] = false;
+          }, 1500);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
     },
   };
 };

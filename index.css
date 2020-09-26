@@ -22,7 +22,7 @@ body {
   height: 480px;
   background-image: url(images/illustration-working.svg);
   background-position: 0% 0%;
-  background-size: 130%;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
@@ -31,6 +31,8 @@ body {
   background-size: 115%;
   background-position: 70% 0;
   background-repeat: no-repeat;
+  top: -80px;
+  /* margin-bottom: 55px; */
 }
 
 .get__started {
@@ -47,4 +49,12 @@ body {
 
 .input__error::-webkit-input-placeholder {
   color: hsl(0, 87%, 67%);
+}
+
+.copied {
+  background-color: hsl(257, 27%, 26%);
+}
+
+.copied:hover {
+  background-color: hsl(257, 27%, 26%);
 }

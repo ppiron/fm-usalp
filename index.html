@@ -33,7 +33,7 @@
         </nav>
       </header>
       <main x-data="data()">
-        <div class="pl-40 mt-20 flex">
+        <div class="pl-40 pb-40 mt-20 flex">
           <div class="w-1/2">
             <h1
               class="text-6xl text-violet-dark font-extrabold leading-none tracking-tight pt-16"
@@ -53,31 +53,48 @@
           <div class="w-1/2 illustration"></div>
         </div>
 
-        <div
-          class="input__container relative mt-20 mx-40 -mb-20 px-16 h-40 bg-violet rounded-lg flex items-center">
+        
+
+        <div class="w-full pb-32 bg-violet-lightest relative">
+          
+          <div class="input__container relative mx-40 -mb-20 px-16 h-40 bg-violet rounded-lg flex items-center">
             <input
               type="text"
               class="h-16 px-8 mr-6 rounded-lg placeholder-gray text-lg flex-1"
               :class="{'input__error': submitError}"
               x-model="link"
-              x-on:input="onKeyUp()"
+              x-on:input="onInput"
+              x-on:keyup="onKeyUp"
               placeholder="Shorten a link here..."
             />
             <button
               class="font-bold px-10 h-16 text-white bg-cyan hover:bg-cyan-ligher rounded-lg text-lg"
-              @click="submit()"
+              @click="submit"
             >
               Shorten It!
             </button>
-          <div x-show="submitError" class="absolute bottom-0 mb-4 text-red text-sm italic">Please add a link</div>
-        </div>
+            <div x-show="submitError" class="absolute bottom-0 mb-4 text-red text-sm italic">Please add a link</div>
+          </div>
 
-        <div class="w-full pt-56 pb-32 bg-violet-lightest">
-          <template x-for="(pippo, index) in links" :key="index">
-            <div class="mx-40 -mt-10"><span x-text="pippo.url"></span></div>
-              
-          </template>
-          <div class="max-w-lg mx-auto text-center">
+          <div class="mt-6">
+            <template x-for="(pippo, index) in links" :key="index">
+              <div class="mx-40 h-16 mt-4 bg-white rounded-lg flex items-center justify-between px-6">
+                <span x-text="pippo.url"></span>
+                <div>
+                  <a :href="`https://rel.ink/${pippo.hash}`" x-text="`https://rel.ink/${pippo.hash}`" class="text-cyan mr-8"></a>
+                  <button
+              class="font-bold w-24 h-10 text-white bg-cyan hover:bg-cyan-ligher rounded-lg "
+              :class="{'copied': pippo.copied}"
+              @click="copy(`https://rel.ink/${pippo.hash}`, index)"
+            >
+              <span x-show="!pippo.copied">Copy</span><span x-show="pippo.copied">Copied!</span>
+            </button>
+                </div>
+              </div>
+            </template>
+          </div>
+
+          <div class="max-w-lg mt-32 mx-auto text-center">
             <div
               class="text-4xl tracking-tight font-extrabold text-violet-dark"
             >
@@ -86,8 +103,7 @@
             <div class="mt-4 text-violet-lighter text-lg">
               Track how your links are performing across the web with our
               advanced statistics dashboard.
-            </div>
-            
+            </div>  
           </div>
 
           <div class="mx-40 mt-16 flex justify-between relative">
