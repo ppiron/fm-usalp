@@ -28,8 +28,8 @@ body {
 
 .input__container {
   background-image: url(images/bg-shorten-desktop.svg);
-  background-size: 115%;
-  background-position: 70% 0;
+  background-size: cover;
+  /* background-position: 70% 0; */
   background-repeat: no-repeat;
   top: -80px;
   /* margin-bottom: 55px; */
@@ -37,8 +37,8 @@ body {
 
 .get__started {
   background-image: url(images/bg-boost-desktop.svg);
-  background-size: 120%;
-  background-position: 70% 0;
+  background-size: cover;
+  /* background-position: 70% 0; */
   background-repeat: no-repeat;
 }
 

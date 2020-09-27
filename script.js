@@ -2,6 +2,7 @@ data = () => {
   return {
     links: JSON.parse(window.sessionStorage.getItem("links")) || [],
     submitError: false,
+    invalidURL: false,
     // copySuccess: false,
     link: "",
     submit() {
@@ -9,6 +10,7 @@ data = () => {
         this.submitError = true;
         return;
       } else {
+        this.invalidURL = false;
         fetch("https://rel.ink/api/links/", {
           headers: {
             Accept: "application/json",
@@ -21,13 +23,21 @@ data = () => {
         })
           .then((response) => response.json())
           .then((json) => {
-            this.links = [
-              ...this.links,
-              { url: this.link, hash: json.hashid, copied: false },
-            ];
-            window.sessionStorage.setItem("links", JSON.stringify(this.links));
-            // console.log(this.links);
-            this.link = "";
+            console.log(json);
+            if (json.url[0] && json.url[0] === "Enter a valid URL.") {
+              this.invalidURL = true;
+            } else {
+              this.links = [
+                ...this.links,
+                { url: this.link, hash: json.hashid, copied: false },
+              ];
+              window.sessionStorage.setItem(
+                "links",
+                JSON.stringify(this.links)
+              );
+              // console.log(this.links);
+              this.link = "";
+            }
           });
       }
     },

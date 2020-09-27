@@ -61,7 +61,7 @@
             <input
               type="text"
               class="h-16 px-8 mr-6 rounded-lg placeholder-gray text-lg flex-1"
-              :class="{'input__error': submitError}"
+              :class="{'input__error': submitError || invalidURL}"
               x-model="link"
               x-on:input="onInput"
               x-on:keyup="onKeyUp"
@@ -74,6 +74,7 @@
               Shorten It!
             </button>
             <div x-show="submitError" class="absolute bottom-0 mb-4 text-red text-sm italic">Please add a link</div>
+            <div x-show="invalidURL" class="absolute bottom-0 mb-4 text-red text-sm italic">Please enter a valid URL</div>
           </div>
 
           <div class="mt-6">
