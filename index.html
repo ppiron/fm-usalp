@@ -90,8 +90,8 @@
               x-on:keyup="onKeyUp"
               placeholder="Shorten a link here..."
             />
-            <div x-show="submitError" class="mt-2 self-start text-red text-sm italic">Please add a link</div>
-            <div x-show="invalidURL" class="mt-2 self-start text-red text-sm italic">Please enter a valid URL</div>
+            <div x-show="submitError" class="mt-2 self-start text-red text-sm italic lg:hidden">Please add a link</div>
+            <div x-show="invalidURL" class="mt-2 self-start text-red text-sm italic lg:hidden">Please enter a valid URL</div>
             <button
               class="font-bold px-10 h-12 mt-4 lg:mt-0 lg:h-16 w-full lg:w-auto text-white bg-cyan lg:hover:bg-cyan-ligher rounded-lg text-lg"
               @click="submit"
@@ -115,7 +115,7 @@
                   <div class="lg:hidden absolute top-0 left-0 right-0 -mx-6 border border-gray border-opacity-50"></div>
                   <a :href="`https://rel.ink/${pippo.hash}`" x-text="`https://rel.ink/${pippo.hash}`" class="text-cyan inline-block mr-8 py-4 lg:py-0"></a>
                   <button
-              class="font-bold lg:mt-0 w-full lg:w-24 h-10 text-white bg-cyan lg:hover:bg-cyan-ligher rounded-lg "
+              class="font-bold lg:mt-0 w-full lg:w-24 h-10 text-white bg-cyan hover:bg-cyan-ligher rounded-lg "
               :class="{'copied': pippo.copied}"
               @click="copy(`https://rel.ink/${pippo.hash}`, index)"
             >
