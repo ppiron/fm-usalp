@@ -21,9 +21,15 @@ body {
 .illustration {
   height: 480px;
   background-image: url(images/illustration-working.svg);
-  background-position: 0% 0%;
+  background-position: 24px 0%;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 1024px) {
+  .illustration {
+    height: 327px;
+  }
 }
 
 .input__container {
@@ -35,11 +41,27 @@ body {
   /* margin-bottom: 55px; */
 }
 
+@media screen and (max-width: 1024px) {
+  .input__container {
+    background-image: url(images/bg-shorten-mobile.svg);
+    background-position: 100% 0%;
+    background-size: 80%;
+  }
+}
+
 .get__started {
   background-image: url(images/bg-boost-desktop.svg);
   background-size: cover;
   /* background-position: 70% 0; */
   background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 1024px) {
+  .get__started {
+    background-image: url(images/bg-boost-mobile.svg);
+    /* background-position: -50% 0%; */
+    /* background-size: 80%; */
+  }
 }
 
 .input__error {

@@ -3,6 +3,7 @@ data = () => {
     links: JSON.parse(window.sessionStorage.getItem("links")) || [],
     submitError: false,
     invalidURL: false,
+    menuOpen: false,
     // copySuccess: false,
     link: "",
     submit() {

@@ -16,6 +16,7 @@ module.exports = {
     },
     extend: {
       screens: {
+        xsm: "375px",
         xxl: "1440px",
       },
       fontSize: {
@@ -24,9 +25,15 @@ module.exports = {
       spacing: {
         22: "5.5rem",
         44: "11rem",
+        52: "13rem",
         68: "17rem",
+        70: "17.5rem",
         72: "18rem",
         76: "19rem",
+      },
+      inset: {
+        12: "3rem",
+        24: "6rem",
       },
     },
   },
